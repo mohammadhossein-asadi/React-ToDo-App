@@ -1,7 +1,8 @@
-const Form = () => {
+const Form = ({ setInputText }) => {
   // Here i can write javascript code and function
   const inputTextHandler = (e) => {
     console.log(e.target.value);
+    setInputText(e.target.value);
   };
   return (
     <form>
