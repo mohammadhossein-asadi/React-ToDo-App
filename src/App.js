@@ -1,4 +1,7 @@
 import "./App.css";
+import Form from "./components/Form";
+
+// Import components
 
 function App() {
   return (
@@ -6,6 +9,7 @@ function App() {
       <header>
         <h1>Todo List</h1>
       </header>
+      <Form />
     </div>
   );
 }
