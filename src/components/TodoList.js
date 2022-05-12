@@ -1,10 +1,14 @@
 // Import components
 
-const TodoList = () => {
+import Todo from "./Todo";
+
+const TodoList = ({ todos }) => {
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        <Todo />
+        {todos.map((todo) => (
+          <Todo />
+        ))}
       </ul>
     </div>
   );
