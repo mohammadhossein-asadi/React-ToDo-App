@@ -1,7 +1,11 @@
 const Form = () => {
+  // Here i can write javascript code and function
+  const inputTextHandler = (e) => {
+    console.log(e.target.value);
+  };
   return (
     <form>
-      <input type="text" className="todo-input" />
+      <input onChange={inputTextHandler} type="text" className="todo-input" />
       <button className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
