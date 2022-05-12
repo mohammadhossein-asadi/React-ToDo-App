@@ -1,3 +1,6 @@
+// Import components
+import { v4 as uuidv4 } from "uuid";
+
 const Form = ({ setInputText, todos, setTodos, inputText }) => {
   // Here i can write javascript code and function
   const inputTextHandler = (e) => {
@@ -8,13 +11,17 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
     e.preventDefault();
     setTodos([
       ...todos,
-      { text: inputText, completed: false, id: Math.random() * 1000 },
+      {
+        text: inputText,
+        completed: false,
+        id: uuidv4(),
+      },
     ]);
   };
   return (
     <form>
       <input onChange={inputTextHandler} type="text" className="todo-input" />
-      <button onCLick={submitTodoHandler} className="todo-button" type="submit">
+      <button onClick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
