@@ -1,4 +1,4 @@
-const Form = ({ setInputText }) => {
+const Form = ({ setInputText, todos, setTodos, inputText }) => {
   // Here i can write javascript code and function
   const inputTextHandler = (e) => {
     console.log(e.target.value);
@@ -6,11 +6,15 @@ const Form = ({ setInputText }) => {
   };
   const submitTodoHandler = (e) => {
     e.preventDefault();
+    setTodos([
+      ...todos,
+      { text: inputText, completed: false, id: Math.random() * 1000 },
+    ]);
   };
   return (
     <form>
       <input onChange={inputTextHandler} type="text" className="todo-input" />
-      <button className="todo-button" type="submit">
+      <button onCLick={submitTodoHandler} className="todo-button" type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">
