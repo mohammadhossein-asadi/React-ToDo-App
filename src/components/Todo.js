@@ -1,7 +1,11 @@
-const Todo = () => {
+import { v4 as uuidv4 } from "uuid";
+
+const Todo = (text) => {
   return (
     <div className="todo">
-      <li className="todo-item">Heyyyyy</li>
+      <li key={uuidv4()} className="todo-item">
+        {text}
+      </li>
       <button className="complete-btn">
         <i className="fas fa-check"></i>
       </button>
