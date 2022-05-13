@@ -42,6 +42,7 @@ function App() {
         setTodos={setTodos}
         setInputText={setInputText}
         setStatus={setStatus}
+        filteredTodos={filteredTodos}
       />
       <TodoList setTodos={setTodos} todos={todos} />
     </div>
