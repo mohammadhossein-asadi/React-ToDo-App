@@ -1,4 +1,4 @@
-const Todo = ({ text }) => {
+const Todo = ({ text ,todos,setTodos }) => {
   // Events
   const deleteHanler = () => {};
   return (
