@@ -14,23 +14,23 @@ function App() {
   // Use Effect
 
   useEffect(() => {
+    // Functions
+    const filterHandler = () => {
+      switch (status) {
+        case "completed":
+          setFilteredTodos(todos.filter((todo) => todo.completed === true));
+          break;
+        case "uncompleted":
+          setFilteredTodos(todos.filter((todo) => todo.completed === false));
+          break;
+        default:
+          setFilteredTodos(todos);
+          break;
+      }
+    };
     filterHandler();
   }, [todos, status]);
 
-  // Functions
-  const filterHandler = () => {
-    switch (status) {
-      case "completed":
-        setFilteredTodos(todos.filter((todo) => todo.completed === true));
-        break;
-      case "uncompleted":
-        setFilteredTodos(todos.filter((todo) => todo.completed === false));
-        break;
-      default:
-        setFilteredTodos(todos);
-        break;
-    }
-  };
   return (
     <div className="App">
       <header>
@@ -42,9 +42,12 @@ function App() {
         setTodos={setTodos}
         setInputText={setInputText}
         setStatus={setStatus}
-        filteredTodos={filteredTodos}
       />
-      <TodoList setTodos={setTodos} todos={todos} />
+      <TodoList
+        filteredTodos={filteredTodos}
+        setTodos={setTodos}
+        todos={todos}
+      />
     </div>
   );
 }
