@@ -11,25 +11,46 @@ function App() {
   const [status, setStatus] = useState("all");
   const [filteredTodos, setFilteredTodos] = useState([]);
 
+  // RUN ONCE when the app start
+  useEffect(() => {
+    getLocalTodos();
+  }, []);
+
+  // Functions
+  const filterHandler = () => {
+    switch (status) {
+      case "completed":
+        setFilteredTodos(todos.filter((todo) => todo.completed === true));
+        break;
+      case "uncompleted":
+        setFilteredTodos(todos.filter((todo) => todo.completed === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  };
+
   // Use Effect
 
   useEffect(() => {
-    // Functions
-    const filterHandler = () => {
-      switch (status) {
-        case "completed":
-          setFilteredTodos(todos.filter((todo) => todo.completed === true));
-          break;
-        case "uncompleted":
-          setFilteredTodos(todos.filter((todo) => todo.completed === false));
-          break;
-        default:
-          setFilteredTodos(todos);
-          break;
-      }
-    };
     filterHandler();
+    saveLocalTodos();
   }, [todos, status]);
+
+  // Save to local
+  const saveLocalTodos = () => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  };
+
+  const getLocalTodos = () => {
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else {
+      let todoLocal = localStorage.getItem("todos", JSON.stringify(todos));
+      setTodos(todoLocal);
+    }
+  };
 
   return (
     <div className="App">
